@@ -93,3 +93,5 @@ const updateChart = (filteredProjects) => {
 if (projects.length > 0) {
   updateFilters();
 }
+
+
