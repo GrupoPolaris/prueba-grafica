@@ -7,31 +7,35 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app" class="container">
-    <!-- Filtros (izquierda) -->
+  <div class="container">
+    <!-- Filtros a la izquierda -->
     <div class="filters">
       <h2>Filtros</h2>
-
+      
       <!-- Cargar archivo Excel -->
       <input type="file" id="fileInput" accept=".xlsx, .xls" onchange="loadExcel(event)">
       
+      <!-- Filtro por tipo de proyecto -->
       <div class="filter-group">
         <label for="type">Tipo de Proyecto:</label>
         <select id="type" onchange="updateFilters()">
           <option value="all">Todos</option>
           <option value="residential">Residencial</option>
           <option value="commercial">Comercial</option>
+          <option value="industrial">Industrial</option>
+          <!-- Agrega más tipos según tu archivo Excel -->
         </select>
       </div>
       
+      <!-- Filtro por rango de presupuesto -->
       <div class="filter-group">
         <label for="budget">Rango de Presupuesto:</label>
-        <input type="range" id="budget" min="1000" max="20000" value="10000" oninput="updateFilters()">
+        <input type="range" id="budget" min="1000" max="100000" value="10000" oninput="updateFilters()">
         <span id="budget-value">Presupuesto: 10000</span>
       </div>
     </div>
 
-    <!-- Gráficas (derecha) -->
+    <!-- Gráficas a la derecha -->
     <div class="charts">
       <canvas id="myChart"></canvas>
       <ul id="project-list"></ul>
@@ -44,3 +48,5 @@
 </body>
 </html>
 
+      
+    
