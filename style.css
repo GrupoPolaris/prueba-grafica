@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  padding: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  max-width: 800px;
+  margin: 20px 0;
+}
+
+.project-list {
+  margin-top: 20px;
+}
+
+.project-list ul {
+  list-style-type: none;
+  padding: 0;
+}
