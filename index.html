@@ -7,28 +7,40 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="container">
+    <!-- Filtros (izquierda) -->
     <div class="filters">
-      <label for="type">Tipo de Proyecto:</label>
-      <select id="type" onchange="updateFilters()">
-        <option value="all">Todos</option>
-        <option value="residential">Residencial</option>
-        <option value="commercial">Comercial</option>
-      </select>
+      <h2>Filtros</h2>
+
+      <!-- Cargar archivo Excel -->
+      <input type="file" id="fileInput" accept=".xlsx, .xls" onchange="loadExcel(event)">
+      
+      <div class="filter-group">
+        <label for="type">Tipo de Proyecto:</label>
+        <select id="type" onchange="updateFilters()">
+          <option value="all">Todos</option>
+          <option value="residential">Residencial</option>
+          <option value="commercial">Comercial</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="budget">Rango de Presupuesto:</label>
+        <input type="range" id="budget" min="1000" max="20000" value="10000" oninput="updateFilters()">
+        <span id="budget-value">Presupuesto: 10000</span>
+      </div>
     </div>
 
-    <div class="chart-container">
+    <!-- Gráficas (derecha) -->
+    <div class="charts">
       <canvas id="myChart"></canvas>
-    </div>
-
-    <div class="project-list">
-      <ul id="project-list">
-        <!-- Aquí se listarán los proyectos filtrados -->
-      </ul>
+      <ul id="project-list"></ul>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
+
