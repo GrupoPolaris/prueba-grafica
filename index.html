@@ -15,38 +15,68 @@
       <!-- Cargar archivo Excel -->
       <input type="file" id="fileInput" accept=".xlsx, .xls" onchange="loadExcel(event)">
       
-      <!-- Filtro por tipo de proyecto -->
+      <!-- Filtro por Título -->
       <div class="filter-group">
-        <label for="type">Tipo de Proyecto:</label>
-        <select id="type" onchange="updateFilters()">
-          <option value="all">Todos</option>
-          <option value="residential">Residencial</option>
-          <option value="commercial">Comercial</option>
-          <option value="industrial">Industrial</option>
-          <!-- Agrega más tipos según tu archivo Excel -->
-        </select>
+        <label for="title">Buscar por Título:</label>
+        <input type="text" id="title" oninput="updateFilters()" placeholder="Buscar...">
       </div>
       
-      <!-- Filtro por rango de presupuesto -->
+      <!-- Filtro por Año -->
       <div class="filter-group">
-        <label for="budget">Rango de Presupuesto:</label>
-        <input type="range" id="budget" min="1000" max="100000" value="10000" oninput="updateFilters()">
-        <span id="budget-value">Presupuesto: 10000</span>
+        <label for="year">Año:</label>
+        <select id="year" onchange="updateFilters()">
+          <option value="all">Todos</option>
+        </select>
+      </div>
+
+      <!-- Filtro por Comunidad Autónoma -->
+      <div class="filter-group">
+        <label for="region">Comunidad Autónoma:</label>
+        <select id="region" onchange="updateFilters()">
+          <option value="all">Todas</option>
+        </select>
+      </div>
+
+      <!-- Filtro por Financiación -->
+      <div class="filter-group">
+        <label for="funding">Financiación mínima:</label>
+        <input type="number" id="funding" onchange="updateFilters()" placeholder="Min. financiación">
+      </div>
+
+      <!-- Filtro por IP -->
+      <div class="filter-group">
+        <label for="ip">IP 1 (Investigador Principal):</label>
+        <input type="text" id="ip" oninput="updateFilters()" placeholder="Buscar IP...">
       </div>
     </div>
 
-    <!-- Gráficas a la derecha -->
-    <div class="charts">
-      <canvas id="myChart"></canvas>
-      <ul id="project-list"></ul>
+    <!-- Resultados a la derecha -->
+    <div class="results">
+      <h2>Resultados</h2>
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Año</th>
+            <th>Comunidad Autónoma</th>
+            <th>Financiación</th>
+            <th>IP 1</th>
+            <th>Universidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Los resultados se llenarán aquí dinámicamente -->
+        </tbody>
+      </table>
+
+      <div id="summary">
+        <p><strong>Financiación Total: </strong><span id="totalFunding">0</span> €</p>
+        <p><strong>Universidades involucradas:</strong> <span id="universitiesList">Ninguna</span></p>
+      </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
-
-      
-    
